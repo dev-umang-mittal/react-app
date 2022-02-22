@@ -14,6 +14,7 @@ function getData(url, method, body) {
     .catch((err) => {
       console.log(err);
     });
+  console.log("h");
 }
 
 export default getData;
