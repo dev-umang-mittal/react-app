@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function dashboard() {
-  const newLocal = "../assets/avatar.png";
   return (
     <main className="profile-page">
       <section className="relative block" style={{ height: "500px" }}>
@@ -52,7 +51,7 @@ export default function dashboard() {
                       type="button"
                       style={{ transition: "all .15s ease" }}
                     >
-                      Connect
+                      Delete
                     </button>
                   </div>
                 </div>
