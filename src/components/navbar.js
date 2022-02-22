@@ -1,16 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function navbar() {
   return (
     <>
       <nav className="flex bg-white flex-wrap items-center justify-between p-4 mb-4">
         <div className="lg:order-2 w-auto lg:w-1/5 lg:text-center">
-          <a
-            className="text-xl text-gray-800 font-semibold font-heading"
-            href="#"
-          >
-            React App
-          </a>
+          <Link to={"/"}>
+            <div className="text-xl text-gray-800 font-semibold font-heading">
+              React App
+            </div>
+          </Link>
         </div>
         <div className="block lg:hidden">
           <button className="navbar-burger flex items-center py-2 px-3 text-indigo-500 rounded border border-indigo-500">
@@ -25,42 +25,30 @@ export default function navbar() {
           </button>
         </div>
         <div className="navbar-menu hidden lg:order-1 lg:block w-full lg:w-2/5">
-          <a
-            className="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-indigo-600"
-            href="#"
-          >
-            Home
-          </a>
-          <a
-            className="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-indigo-600"
-            href="#"
-          >
-            Team
-          </a>
-          <a
-            className="block lg:inline-block mt-4 lg:mt-0 text-blue-900 hover:text-indigo-600"
-            href="#"
-          >
-            Galery
-          </a>
+          <Link to={"/signup"}>
+            <div className="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-indigo-600">
+              SignUp
+            </div>
+          </Link>
+          <Link to={"/login"}>
+            <div className="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-indigo-600">
+              Login
+            </div>
+          </Link>
+          <Link to={"/dashboard"}>
+            <div className="block lg:inline-block mt-4 lg:mt-0 text-blue-900 hover:text-indigo-600">
+              Dashboard
+            </div>
+          </Link>
         </div>
         <div className="navbar-menu hidden lg:order-3 lg:block w-full lg:w-2/5 lg:text-right">
-          <a
-            className="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-indigo-600"
-            href="#"
-          >
+          <a className="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-indigo-600">
             Content
           </a>
-          <a
-            className="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-indigo-600"
-            href="#"
-          >
+          <a className="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-indigo-600">
             FAQ
           </a>
-          <a
-            className="block lg:inline-block mt-4 lg:mt-0 text-blue-900 hover:text-indigo-600"
-            href="#"
-          >
+          <a className="block lg:inline-block mt-4 lg:mt-0 text-blue-900 hover:text-indigo-600">
             Contact
           </a>
         </div>
