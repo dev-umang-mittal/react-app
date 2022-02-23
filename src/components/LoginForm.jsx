@@ -7,7 +7,7 @@ export default function LoginForm() {
   const email = useRef();
   const password = useRef();
   const navigate = useNavigate();
-
+  //TODO: login user and store the user into the user class
   function loggedIn() {
     navigate("../dashboard/");
   }

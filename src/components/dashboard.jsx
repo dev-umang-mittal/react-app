@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import getData from "./apiCalls";
+import User from "./user";
 
 export default function Dashboard() {
   const id = 1;
-
+  // TODO: get id from the route and fill details using the user class
   const [user, setUser] = useState([]);
   const navigate = useNavigate();
 
