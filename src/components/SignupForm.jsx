@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import getData from "./apiCalls";
 
-export default function signupForm() {
+export default function SignupForm() {
+  const [response, setResponse] = useState();
+  const [alertClass, setAlertClass] = useState("invisible");
+
   function singup() {
-    getData("http://127.0.0.1:8080/create", "POST", { name: "Umang" });
+    getData(
+      "http://127.0.0.1:8080/create",
+      "POST",
+      { name: "Umang" },
+      setResponse
+    );
   }
+
+  useEffect(() => {
+    if (!response) return;
+    let classes =
+      "container flex items-center text-white text-sm font-bold px-4 py-3 relative mx-auto";
+    if (response?.code === 201) {
+      classes += " bg-green-500";
+    } else classes += " bg-pink-500";
+    setAlertClass(classes);
+    console.log(response);
+  }, [response]);
 
   return (
     <div>
@@ -82,6 +101,19 @@ export default function signupForm() {
               </button>
             </div>
           </div>
+        </div>
+        <div className={alertClass}>
+          <svg
+            width="20"
+            height="20"
+            fill="currentColor"
+            className="w-4 h-4 mr-2"
+            viewBox="0 0 1792 1792"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M1216 1344v128q0 26-19 45t-45 19h-512q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h64v-384h-64q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h384q26 0 45 19t19 45v576h64q26 0 45 19t19 45zm-128-1152v192q0 26-19 45t-45 19h-256q-26 0-45-19t-19-45v-192q0-26 19-45t45-19h256q26 0 45 19t19 45z"></path>
+          </svg>
+          <p>{response?.status}</p>
         </div>
       </section>
     </div>

@@ -1,4 +1,4 @@
-function getData(url, method, body) {
+function getData(url, method, body, callback) {
   fetch(url, {
     method: method,
     headers: { "Content-Type": "application/json" },
@@ -9,12 +9,12 @@ function getData(url, method, body) {
     })
     .then((response) => {
       console.log(response);
-      return response;
+      callback(response);
     })
     .catch((err) => {
       console.log(err);
+      callback({ code: 400, status: "Something went Wrong. Try Again later." });
     });
-  console.log("h");
 }
 
 export default getData;
