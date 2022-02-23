@@ -9,11 +9,14 @@ function getData(url, method, body, callback) {
     })
     .then((response) => {
       console.log(response);
-      callback(response);
+      callback?.(response);
     })
     .catch((err) => {
       console.log(err);
-      callback({ code: 400, status: "Something went Wrong. Try Again later." });
+      callback?.({
+        code: 400,
+        status: "Something went Wrong. Try Again later.",
+      });
     });
 }
 

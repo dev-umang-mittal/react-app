@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import getData from "./apiCalls";
 
-export default function dashboard() {
+export default function Dashboard() {
+  const id = 1;
+
+  const [user, setUser] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getData(`http://127.0.0.1:8080/user/${id}`, "GET", undefined, setUser);
+  }, []);
+
+  function deleteUser() {
+    getData(
+      `http://127.0.0.1:8080/user/${id}`,
+      "DELETE",
+      undefined,
+      navigate("../")
+    );
+  }
+
   return (
     <main className="profile-page">
       <section className="relative block" style={{ height: "500px" }}>
@@ -50,6 +70,7 @@ export default function dashboard() {
                       className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
                       type="button"
                       style={{ transition: "all .15s ease" }}
+                      onClick={deleteUser}
                     >
                       Delete
                     </button>
@@ -80,11 +101,11 @@ export default function dashboard() {
               </div>
               <div className="text-center mt-12">
                 <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 mb-2">
-                  Jenna Stones
+                  {user.username}
                 </h3>
                 <div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
                   <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>{" "}
-                  Los Angeles, California
+                  {user.email}
                 </div>
                 <div className="mb-2 text-gray-700 mt-10">
                   <i className="fas fa-briefcase mr-2 text-lg text-gray-500"></i>
