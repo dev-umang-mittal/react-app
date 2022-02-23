@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import getData from "./apiCalls";
 
 export default function SignupForm() {
   const [response, setResponse] = useState();
   const [alertClass, setAlertClass] = useState("invisible");
+  const username = useRef();
+  const email = useRef();
+  const password = useRef();
 
   function singup() {
     getData(
       "http://127.0.0.1:8080/create",
       "POST",
-      { name: "Umang" },
+      {
+        username: username.current.value,
+        email: email.current.value,
+        password: password.current.value,
+      },
       setResponse
     );
   }
@@ -42,6 +49,7 @@ export default function SignupForm() {
               <div className="max-w-sm mx-auto md:w-2/3">
                 <div className=" relative ">
                   <input
+                    ref={email}
                     type="text"
                     id="password"
                     className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -58,6 +66,7 @@ export default function SignupForm() {
                 <div>
                   <div className=" relative ">
                     <input
+                      ref={username}
                       type="text"
                       id="user-info-name"
                       className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -73,6 +82,7 @@ export default function SignupForm() {
               <div className="w-full max-w-sm pl-2 mx-auto">
                 <div className=" relative ">
                   <input
+                    ref={password}
                     type="text"
                     id="user-info-password"
                     className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
