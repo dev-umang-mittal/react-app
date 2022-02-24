@@ -8,8 +8,8 @@ export default function LoginForm() {
   const password = useRef();
   const navigate = useNavigate();
   //TODO: login user and store the user into the user class
-  function loggedIn(user) {
-    let user = createUser(user);
+  function loggedIn(userData) {
+    let user = createUser(userData);
     navigate("../dashboard/");
   }
 

@@ -6,11 +6,11 @@ import { getUser } from "./user";
 export default function Dashboard() {
   const id = 1;
   // TODO: get id from the route and fill details using the user class
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(getUser());
   const navigate = useNavigate();
 
   useEffect(() => {
-    setUser(getUser());
+    if (!user) navigate("../");
   }, []);
 
   function deleteUser() {
@@ -102,11 +102,11 @@ export default function Dashboard() {
               </div>
               <div className="text-center mt-12">
                 <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 mb-2">
-                  {user.username}
+                  {user?.username}
                 </h3>
                 <div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
                   <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>{" "}
-                  {user.email}
+                  {user?.email}
                 </div>
                 <div className="mb-2 text-gray-700 mt-10">
                   <i className="fas fa-briefcase mr-2 text-lg text-gray-500"></i>

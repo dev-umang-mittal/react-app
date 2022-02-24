@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getUser } from "./user";
 
-export default function navbar() {
+export default function Navbar() {
+  const [user, setUser] = useState(getUser);
+  //TODO: delete the routes when the user is logged in
+
   return (
     <>
       <nav className="flex bg-white flex-wrap items-center justify-between p-4 mb-4">
