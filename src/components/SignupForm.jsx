@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import getData from "./apiCalls";
+import { createUser } from "./user";
 
 export default function SignupForm() {
   const [response, setResponse] = useState();
@@ -7,6 +9,13 @@ export default function SignupForm() {
   const username = useRef();
   const email = useRef();
   const password = useRef();
+  const navigate = useNavigate();
+
+  function gotResponse(user) {
+    setResponse(user);
+    createUser(user);
+    navigate("../dashboard");
+  }
 
   function singup() {
     getData(
@@ -17,7 +26,7 @@ export default function SignupForm() {
         email: email.current.value,
         password: password.current.value,
       },
-      setResponse
+      gotResponse
     );
   }
 

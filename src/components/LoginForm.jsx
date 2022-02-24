@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import getData from "./apiCalls";
-import User from "./user";
+import { createUser } from "./user";
 
 export default function LoginForm() {
   const email = useRef();
@@ -9,7 +9,7 @@ export default function LoginForm() {
   const navigate = useNavigate();
   //TODO: login user and store the user into the user class
   function loggedIn(user) {
-    let user = new User(user);
+    let user = createUser(user);
     navigate("../dashboard/");
   }
 

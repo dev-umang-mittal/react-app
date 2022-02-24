@@ -1,3 +1,14 @@
+let user;
+
+function createUser(userData) {
+  user = new User(userData);
+  return user;
+}
+
+function getUser() {
+  return user;
+}
+
 class User {
   constructor(user) {
     this.user = user;
@@ -11,4 +22,4 @@ class User {
   }
 }
 
-export default User;
+export { createUser, getUser };

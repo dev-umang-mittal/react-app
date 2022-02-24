@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import getData from "./apiCalls";
-import User from "./user";
+import { getUser } from "./user";
 
 export default function Dashboard() {
   const id = 1;
@@ -10,7 +10,7 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getData(`http://127.0.0.1:8080/user/${id}`, "GET", undefined, setUser);
+    setUser(getUser());
   }, []);
 
   function deleteUser() {
