@@ -6,7 +6,7 @@ import User from "./user";
 export default function Dashboard() {
   const id = 1;
   // TODO: get id from the route and fill details using the user class
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
