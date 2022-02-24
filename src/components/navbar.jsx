@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { getUser } from "./user";
+import { Link, useNavigate } from "react-router-dom";
+import { getUser, deleteUser } from "./user";
 
 export default function Navbar() {
   const [user, setUser] = useState(getUser);
+  const navigate = useNavigate();
   //TODO: delete the routes when the user is logged in
+  function logout() {
+    setUser(undefined);
+    deleteUser();
+    navigate("../");
+  }
 
   return (
     <>
@@ -52,9 +58,12 @@ export default function Navbar() {
           <a className="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-indigo-600">
             FAQ
           </a>
-          <a className="block lg:inline-block mt-4 lg:mt-0 text-blue-900 hover:text-indigo-600">
-            Contact
-          </a>
+          <button
+            className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+            onClick={logout}
+          >
+            Logout
+          </button>
         </div>
       </nav>
     </>

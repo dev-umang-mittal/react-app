@@ -1,7 +1,7 @@
 let user;
 
 function createUser(userData) {
-  user = new User(userData);
+  user = userData;
   return user;
 }
 
@@ -9,17 +9,8 @@ function getUser() {
   return user;
 }
 
-class User {
-  constructor(user) {
-    this.user = user;
-  }
-
-  get() {
-    return this.user;
-  }
-  set(user) {
-    this.user = user;
-  }
+function deleteUser() {
+  user = undefined;
 }
 
-export { createUser, getUser };
+export { createUser, getUser, deleteUser };

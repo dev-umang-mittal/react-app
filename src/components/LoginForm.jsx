@@ -9,7 +9,8 @@ export default function LoginForm() {
   const navigate = useNavigate();
   //TODO: login user and store the user into the user class
   function loggedIn(userData) {
-    let user = createUser(userData);
+    createUser(userData);
+    console.log(userData);
     navigate("../dashboard/");
   }
 
@@ -28,7 +29,7 @@ export default function LoginForm() {
         Login To Your Account
       </div>
       <div className="mt-8">
-        <form action="#" autoComplete="off">
+        <div action="#" autoComplete="off">
           <div className="flex flex-col mb-2">
             <div className="flex relative ">
               <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
@@ -76,18 +77,16 @@ export default function LoginForm() {
           <div className="flex w-full">
             <button
               onClick={loginUser}
-              type="submit"
               className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
             >
               Login
             </button>
           </div>
-        </form>
+        </div>
       </div>
       <div className="flex items-center justify-center mt-6">
         <Link to={"/signup"}>
           <div
-            href="#"
             target="_blank"
             className="inline-flex items-center text-xs font-thin text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white"
           >

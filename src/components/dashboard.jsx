@@ -4,8 +4,6 @@ import getData from "./apiCalls";
 import { getUser } from "./user";
 
 export default function Dashboard() {
-  const id = 1;
-  // TODO: get id from the route and fill details using the user class
   const [user, setUser] = useState(getUser());
   const navigate = useNavigate();
 
@@ -15,7 +13,7 @@ export default function Dashboard() {
 
   function deleteUser() {
     getData(
-      `http://127.0.0.1:8080/user/${id}`,
+      `http://127.0.0.1:8080/user/${user?.id}`,
       "DELETE",
       undefined,
       navigate("../")
@@ -69,7 +67,6 @@ export default function Dashboard() {
                   <div className="py-6 px-3 mt-32 sm:mt-0">
                     <button
                       className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
-                      type="button"
                       style={{ transition: "all .15s ease" }}
                       onClick={deleteUser}
                     >
